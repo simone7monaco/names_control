@@ -36,7 +36,8 @@ def getText(filename):
 
 jr = JaroWinkler()
 def similarity(word, w):
-    sym = jr.similarity(word.lower(), w.lower())
+    # sym = jr.similarity(word.lower(), w.lower())
+    sym = jr.similarity(word.title(), w.title())
     if abs(len(word) - len(w)) > .5*len(word) or len(w) < 3 or w in preposizioni:
         sym = 0
     return sym
@@ -63,7 +64,9 @@ def main():
     words = np.array([f"{words[i][1:]} {words[i+1][:-1]}" if words[i].startswith('"') else words[i] for i in range(len(words)) if not words[i].endswith('"')])
 
     threshold = st.slider("Inserisci la precisione", .5, 1., .75, help="Una precisione maggiore farà trovare meno parole")
-    care_spaces = np.array([" " in w for w in words])
+
+    # TODO: implement multiple words control
+    # care_spaces = np.array([" " in w for w in words])
     w_keys = np.zeros_like(words)
 
 #    cols = st.columns(len(words)) if len(words) else None
@@ -72,16 +75,16 @@ def main():
 #                # on_change=st.experimental_rerun()
 #                )
     color_document = []
-    st.write(f"Slider has value {threshold}")
     for paragraph in document:
         paragraph = re.split("\s+|'|’", paragraph)
         last_found = -1
         for i in range(len(paragraph)):
-            w = paragraph[i]
+            w = re.sub(r"[^a-zA-Z.\-\d\s:]", "", paragraph[i])
 
             # if [similarity(word.split()[0], w) for word in words[care_spaces]]
+
             if len(w) < 1: continue
-            if (w[-1] in [",", ":", ";", "-", ")"]) or (w[-1] == "." and w.count(".")<=1 and w not in abbreviazioni):
+            if (w[-1] == "." and w.count(".")<=1 and w not in abbreviazioni):
                 w = w[:-1]
 
             score = np.array([similarity(word, w) for word in words])
