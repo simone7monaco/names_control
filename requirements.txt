@@ -1,0 +1,5 @@
+streamlit
+strsimpy
+python-docx
+pyyaml
+st-annotated-text

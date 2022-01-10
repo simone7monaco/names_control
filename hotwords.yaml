@@ -1,0 +1,52 @@
+version: 1.0
+abbreviazioni:
+    - soc.
+    - coop.
+    - art.
+    - avv.
+    - amn.
+    - dott.
+    - dott.ssa
+    - ass.
+    - b.ca
+    
+preposizioni:
+    - del
+    - gli
+    - dei
+    - all
+    - dal
+    - sul
+    - sul
+    - dai
+    - nei
+    - nel
+    - alla
+    - allo
+    - dalla
+    - dallo
+    - dagli
+    - dello
+    - della
+    - dell
+    - degli
+    - delle
+    - allo
+    - alla
+    - agli
+    - alle
+    - dallo
+    - dalla
+    - dall
+    - dagli
+    - dalle
+    - nello
+    - nella
+    - nell
+    - negli
+    - nelle
+    - sullo
+    - sulla
+    - sull
+    - sugli
+    - sulle
