@@ -5,6 +5,7 @@ import docx
 import yaml
 import re
 import numpy as np
+from streamlit_tags import st_tags
 from annotated_text import annotated_text
 from colorsys import rgb_to_hsv, hsv_to_rgb
 
@@ -58,10 +59,13 @@ def main():
     data = st.file_uploader("Carica il file", type=["doc", "docx"])
     document = getText(data)
     
-    words = st.text_input("Parole da controllare",
-                          help="Inserire tutti gli elementi da controllare, separati da spazio. Poi premere invio.").split()
-
-    words = np.array([f"{words[i][1:]} {words[i+1][:-1]}" if words[i].startswith('"') else words[i] for i in range(len(words)) if not words[i].endswith('"')])
+    # words = st.text_input("Parole da controllare",
+    #                       help="Inserire tutti gli elementi da controllare, separati da spazio. Poi premere invio.").split()
+    words = st_tags(
+            label='Parole da controllare:',
+            text='Premi invio per inserire',
+            suggestions=[],
+            )
 
     threshold = st.slider("Inserisci la precisione", .5, 1., .75, help="Una precisione maggiore farà trovare meno parole")
 
