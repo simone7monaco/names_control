@@ -23,5 +23,5 @@ mkdir -p /Applications/Controlla_Nomi.app/Contents/MacOS
 
 cp $SCRIPT_DIR/run.sh /Applications/Controlla_Nomi.app/Contents/MacOS/Controlla_Nomi
 chmod +x /Applications/Controlla_Nomi.app/Contents/MacOS/Controlla_Nomi
-cp $SCRIPT_DIR/Controller.py /Applications/Controlla_Nomi.app/Contents/MacOS/Cotroller.py
+cp $SCRIPT_DIR/Controller.py /Applications/Controlla_Nomi.app/Contents/MacOS/Controller.py
 cp $SCRIPT_DIR/hotwords.yaml /Applications/Controlla_Nomi.app/Contents/MacOS/
