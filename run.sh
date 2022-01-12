@@ -13,8 +13,9 @@ case "${1}" in
 esac
 }
 
-SCRIPT_DIR=`abspath ${0}`
+# SCRIPT_DIR=`abspath ${0}`
 
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 streamlit run $SCRIPT_DIR/Controller.py
 
 
