@@ -23,5 +23,5 @@ mkdir -p s/Applications/Controlla_Nomi.app/Contents/MacOS
 
 cp run.sh /Applications/Controlla_Nomi.app/Contents/MacOS/Controlla_Nomi
 chmod +x /Applications/Controlla_Nomi.app/Contents/MacOS/Controlla_Nomi
-cp web_app.py /Applications/Controlla_Nomi.app/Contents/MacOS/
+cp Controller.py /Applications/Controlla_Nomi.app/Contents/MacOS/Cotroller.py
 cp hotwords.yaml /Applications/Controlla_Nomi.app/Contents/MacOS/

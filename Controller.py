@@ -66,6 +66,7 @@ def main():
             text='Premi invio per inserire',
             suggestions=[],
             )
+    words = list(set(words))
 
     threshold = st.slider("Inserisci la precisione", .5, 1., .75, help="Una precisione maggiore farà trovare meno parole")
 

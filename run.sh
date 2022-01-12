@@ -15,7 +15,7 @@ esac
 
 SCRIPT_DIR=`abspath ${0}`
 
-streamlit run $SCRIPT_DIR/web_app.py
+streamlit run $SCRIPT_DIR/Controller.py
 
 
 # To add an icon to your new application, you need to do the following:
