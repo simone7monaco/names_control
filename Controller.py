@@ -29,7 +29,7 @@ with open(Path(__file__).parent / "hotwords.yaml", "r") as f:
     abbreviazioni = hotwords["abbreviazioni"]
     preposizioni = hotwords["preposizioni"]
 
-def getText(filename, usedocx=False):
+def getText(filename, usedocx=True):
     if usedocx:
         doc = docx.Document(filename)
         fullText = []
