@@ -2,6 +2,7 @@ import streamlit as st
 from strsimpy.jaro_winkler import JaroWinkler
 from pathlib import Path
 import docx
+import textract
 import yaml
 import re
 import numpy as np
@@ -28,11 +29,14 @@ with open(Path(__file__).parent / "hotwords.yaml", "r") as f:
     abbreviazioni = hotwords["abbreviazioni"]
     preposizioni = hotwords["preposizioni"]
 
-def getText(filename):
-    doc = docx.Document(filename)
-    fullText = []
-    for para in doc.paragraphs:
-        fullText.append(para.text)
+def getText(filename, usedocx=False):
+    if usedocx:
+        doc = docx.Document(filename)
+        fullText = []
+        for para in doc.paragraphs:
+            fullText.append(para.text)
+    else:
+        fullText = textract.process(filename) if filename is not None else None
     return fullText
 
 jr = JaroWinkler()
@@ -84,7 +88,7 @@ def main():
         paragraph = re.split("\s+|'|’", paragraph)
         last_found = -1
         for i in range(len(paragraph)):
-            w = re.sub(r"[^a-zA-Z.\-\d\s:]", "", paragraph[i])
+            w = re.sub(r"[^a-zA-Z.\-\d\s]", "", paragraph[i])
 
             # if [similarity(word.split()[0], w) for word in words[care_spaces]]
 
